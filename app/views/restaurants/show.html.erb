@@ -1,0 +1,23 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= "#{@restaurant.address}, join us here !" %></p>
+  <p><%= "Here the phone number to join our team : #{@restaurant.phone_number}" %></p>
+  <p><%= "Lets discover our good #{@restaurant.category} food" %></p>
+
+  <h5>Reviews</h5>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item d-flex justify-content-between">
+        <div>
+          <%= review.content %>
+        </div>
+        <div>
+          <%= "Rates : #{review.rating}/5" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "homepage", restaurants_path %>
+  <%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
+</div>
